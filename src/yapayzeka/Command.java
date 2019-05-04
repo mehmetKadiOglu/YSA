@@ -47,7 +47,7 @@ public class Command {
 
     private int enBuyukKatmanHucreSayisi() {
 
-        int enBuyuk = 0;
+        int enBuyuk = YapayZekaVeriGiris.getNesne().getBagimsizDegiskenSayisi();
         for (int i = 0; i < YapayZekaVeriGiris.getNesne().getKatmanSayisi(); i++) {
             if (enBuyuk < YapayZekaVeriGiris.getNesne().getKatmanHucreSayisi(i)) {
                 enBuyuk = YapayZekaVeriGiris.getNesne().getKatmanHucreSayisi(i);

@@ -17,6 +17,30 @@ import java.util.logging.Logger;
 
 /**
  *
+ * 
+ * YapayZekaVeriGiris sınıfında kullanıcıdan girilmesi beklenen parametreler tutuluyor. Bunlar:
+ *  Bağımlı değişken sayısı
+ *  Bağımsız değişken sayısı
+ *  Katman Sayısı
+ *  Katmanda bulunan hucrelerin sayısı
+ *  Hucrelerin bağlantı sayısı
+ *  Okunacak olan csv dosya yolu
+ * 
+ * YapayZekaNode sınıfı, içerisinde yapay sinir ağının başlangıç katman(katmanlar birbirlerine bağlıdır!) nesnesi bulunuyor. Bu nesne
+ * ile hesaplama işlemi başlatılıyor.
+ * 
+ * YapayZekaIslem sınıfı, YapayZekaNode sınıfını kullanır. Node sıfını üzerinden tahmin işlemi yapılmadan önce gerekli olan işlemleride
+ * içerisinde barındırır. Bunlar:
+ *  Mormalisazyon için bağımsız-bağımlı değişkenlerin değer aralıklarını setleme işlelerini başlatır.
+ * 
+ * YapayZekaCiz sınıfır, kullacının oluşturduğu ağı JPanel üzerinde gösterilmesi için kullanılıyor
+ * 
+ * DegerARaliklari sınıfır, YapayZekaNode sınıfında kullanılıyor. Bağımlı - Bağımsız değişkenlerin sınır aralıklarını bulmak için kullanılıyor.
+ * 
+ * 
+ *  
+ * 
+ * 
  * @author mehmet
  */
 public class YapayZeka {
