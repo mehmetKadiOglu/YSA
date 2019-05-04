@@ -24,7 +24,7 @@ public class YapayZeka {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws FileNotFoundException, IOException {
+    public static void main(String[] args){
         // D://lazimliklar/dersler/Machine_Learning/Uygulama/deneme2.csv
         // Command command = new Command();
 
@@ -32,50 +32,6 @@ public class YapayZeka {
         // command.yapayZekaTahmin();
         // command.yapayZekaCiz();
         // double sonuc = (1 - Math.pow(Math.E, (-2*0.5)) ) / (1 + Math.pow(Math.E, (2*0.5)) );
-        BufferedReader buffer = null;
-        FileReader aa = new FileReader("D://lazimliklar/dersler/Machine_Learning/Uygulama/deneme2.csv");
-        buffer = new BufferedReader(aa);
-        buffer.
-
-        String line = null;
-
-        try {
-            System.out.println(buffer.readLine());
-            System.out.println(buffer.readLine());
-            System.out.println(buffer.readLine());
-            buffer.mark(0);
-            System.out.println(buffer.readLine());
-            System.out.println(buffer.readLine());
-            buffer.reset();
-            buffer.reset();
-            buffer.reset();
-
-            buffer.mark(0);
-            buffer.mark(0);
-            buffer.reset();
-            System.out.println("-------------");
-            System.out.println(buffer.readLine());
-            System.out.println(buffer.readLine());
-            System.out.println(buffer.readLine());
-            System.out.println("-------------");
-            System.out.println("-------------");
-        } catch (IOException ex) {
-            Logger.getLogger(MinDeger.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        Scanner scanner = new Scanner(new File("D://lazimliklar/dersler/Machine_Learning/Uygulama/deneme2.csv"));
-        while (scanner.hasNext()) {
-            System.out.println(scanner.nextLine());
-            //List<String> line = parseLine(scanner.nextLine());
-            // System.out.println("Country [id= " + line.get(0) + ", code= " + line.get(1) + " , name=" + line.get(2) + "]");
-        }
-         System.out.println("-------------");
-          System.out.println("-------------55");
-        scanner.reset();
-        while (scanner.hasNext()) {
-            System.out.println(scanner.nextLine());
-            //List<String> line = parseLine(scanner.nextLine());
-            // System.out.println("Country [id= " + line.get(0) + ", code= " + line.get(1) + " , name=" + line.get(2) + "]");
-        }
+        System.out.print("girrrim");
     }
 }
