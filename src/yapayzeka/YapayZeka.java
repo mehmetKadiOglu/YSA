@@ -26,12 +26,12 @@ public class YapayZeka {
      */
     public static void main(String[] args){
         // D://lazimliklar/dersler/Machine_Learning/Uygulama/deneme2.csv
-        // Command command = new Command();
+      //          this.setDosyaYolu("D://lazimliklar/dersler/Machine_Learning/Uygulama/deneme2.csv");
+         Command command = new Command();
 
-        //  command.verileriHazirla();
+          command.verileriHazirla();
         // command.yapayZekaTahmin();
-        // command.yapayZekaCiz();
+         command.yapayZekaCiz();
         // double sonuc = (1 - Math.pow(Math.E, (-2*0.5)) ) / (1 + Math.pow(Math.E, (2*0.5)) );
-        System.out.print("girrrim");
     }
 }

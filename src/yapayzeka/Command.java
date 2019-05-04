@@ -34,14 +34,14 @@ public class Command {
     public void yapayZekaCiz() {
 
         int genislik = 140 * (YapayZekaVeriGiris.getNesne().getKatmanSayisi() + 1);
-        int yukseklik = 90 * this.enBuyukKatmanHucreSayisi();
+        int yukseklik = 110 * this.enBuyukKatmanHucreSayisi();
 
         JFrame f = new JFrame("Yapay Zeka Görsel");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setSize(genislik, yukseklik);
         f.setVisible(true);
 
-        YapayZekaCiz dc = new YapayZekaCiz((yukseklik / 2) - 5 * 8);
+        YapayZekaCiz dc = new YapayZekaCiz((yukseklik / 2) - (5 * 8));
         f.add(dc);
     }
 
