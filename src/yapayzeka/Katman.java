@@ -37,6 +37,9 @@ public class Katman {
 
         return this.hucreList.size();
     }
+    public int getHucreAgirlikSize(){
+        return this.hucreList.get(0).getAgirlikSize();
+    }
 
     private Hücre getListElement(int index) {
 
@@ -45,6 +48,10 @@ public class Katman {
 
     public double[] hucreKararlari(double[] data) {
 
+        /*
+        
+        sdsa asdsa d sads
+        */
         double[] kararData = new double[this.getHucreListSize()];
 
         for (int i = 0; i < this.getHucreListSize(); i++) {

@@ -11,8 +11,8 @@ package yapayzeka;
  */
 public class YapayZekaNode {
 
-    public Katman ilkKatman = null;
-    public Katman sonKatman = null;
+    private Katman ilkKatman = null;
+    private Katman sonKatman = null;
 
     static private YapayZekaNode node = null;
 
@@ -28,7 +28,9 @@ public class YapayZekaNode {
         return node;
 
     }
-
+    public Katman getIlkKatman(){
+        return this.ilkKatman;
+    }
     public void katmanHazirla() {
         
         this.ilkKatman = new Katman(YapayZekaVeriGiris.getNesne().getKatmanHucreSayisi(0), YapayZekaVeriGiris.getNesne().getHucreBaglantiSayisi(0));
@@ -46,19 +48,16 @@ public class YapayZekaNode {
     }
     
 
-    public void kararVer(double[] bagimliDegisken, double[] bagimsizDegisken) {
+    public double[] kararVer(double[] bagimsizDegisken) {
         
+        int bagimli = YapayZekaVeriGiris.getNesne().getBagimliDegiskenSayisi();
 
         double[] normalizeData = Normalizasyon.getNesne().islemYap(bagimsizDegisken, new Normalize(), 0, bagimsizDegisken.length);
 
         double[] kararData = this.ilkKatman.iletisimBaslat(normalizeData);
         
-        double[] deNormalizeData = Normalizasyon.getNesne().islemYap(kararData, new DeNormalize(), bagimsizDegisken.length, bagimliDegisken.length + bagimsizDegisken.length);
+        double[] deNormalizeData = Normalizasyon.getNesne().islemYap(kararData, new DeNormalize(), bagimsizDegisken.length, bagimli + bagimsizDegisken.length);
         
-        for (int i = 0; i < deNormalizeData.length; i++) 
-            System.out.println(deNormalizeData[i] + " tahmin. Dogru " + bagimliDegisken[i]);
-        
-        
-        System.out.println();
+        return deNormalizeData;
     }
 }

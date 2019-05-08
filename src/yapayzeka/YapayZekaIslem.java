@@ -5,12 +5,8 @@
  */
 package yapayzeka;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -38,7 +34,7 @@ public class YapayZekaIslem {
         double [] bagimsizDegisken = DiziKopyala.islem(data, 0, bagimsiz);
         double [] bagimliDegisken = DiziKopyala.islem(data, bagimsiz ,bagimli);
 
-        YapayZekaNode.getnesne().kararVer(bagimliDegisken, bagimsizDegisken);
+        YapayZekaNode.getnesne().kararVer(bagimsizDegisken);
         
     }
 

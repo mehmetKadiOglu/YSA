@@ -21,11 +21,15 @@ public class ReaderCSV {
     private BufferedReader buffer = null;
     
 
-    public void clearBuffer() throws IOException {
+    public void clearBuffer() {
 
         try {
             this.buffer = new BufferedReader(new FileReader(YapayZekaVeriGiris.getNesne().getDosyaYolu()));
-            this.buffer.readLine(); // sutun başlıkları alınmaması için 1 okuma yapıldı
+            try {
+                this.buffer.readLine(); // sutun başlıkları alınmaması için 1 okuma yapıldı
+            } catch (IOException ex) {
+                Logger.getLogger(ReaderCSV.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(YapayZekaIslem.class.getName()).log(Level.SEVERE, null, ex);
         }
