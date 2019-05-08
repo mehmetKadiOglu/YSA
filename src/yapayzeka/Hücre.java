@@ -25,10 +25,8 @@ public class Hücre {
     private void setAgirlik(int agirlikUzunlugu) {
 
         this.agirlik = new double[agirlikUzunlugu];
-       // Random r = new Random();
         for (int index = 0; index < agirlikUzunlugu; index++) {
             this.agirlik[index] = Math.random();
-           // this.agirlik[index] =  -1 +  (2 * r.nextDouble())  ;
         }
 
     }
@@ -42,9 +40,7 @@ public class Hücre {
     public double kararAl(double[] data) {
 
         double toplamDeger = this.toplamFonk(data);
-       // double fNet = (1 - this.kareAl(-2.0 * toplamDeger) ) / (1 + this.kareAl(2.0 * toplamDeger ) );
         double fNet = (1)/(1 + ( this.kareAl(toplamDeger * -1) ));
-        System.out.println("Sigmoid sonuc  = " + fNet + "    Toplam Fonksiyonundan gelen sonuc = " + toplamDeger);
 
         return fNet;
 

@@ -40,15 +40,12 @@ public class YapayZeka {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // D://lazimliklar/dersler/Machine_Learning/Uygulama/deneme2.csv
         //          this.setDosyaYolu("D://lazimliklar/dersler/Machine_Learning/Uygulama/deneme2.csv");
         Command command = new Command();
 
         command.verileriAl();
         command.normalizeYap();
         // command.yapayZekaTahmin();
-
         //command.yapayZekaCiz();
-        // double sonuc = (1 - Math.pow(Math.E, (-2*0.5)) ) / (1 + Math.pow(Math.E, (2*0.5)) );
     }
 }
