@@ -17,29 +17,29 @@ public class YapayZekaEgit {
     private final double OGRENME_KATSAYİSİ = 0.10;
     private final double HATA_ESIGI = 0.10;
     private double hataToplami = 0.0;
-   // private List<List<Double>> cikisList = null;
+    // private List<List<Double>> cikisList = null;
     private List<List<Double>> girisList = null;
 
     public YapayZekaEgit() {
-        this.cikisList = new ArrayList<List<Double>>();
+        // this.cikisList = new ArrayList<List<Double>>();
         this.girisList = new ArrayList<List<Double>>();
         this.listeOlustur();
     }
 
     private void listeOlustur() {
+        int parentIndex = 0;
         Katman katmanNesne = YapayZekaNode.getnesne().getIlkKatman();
-        for (int parentIndex = 0; (katmanNesne != null); parentIndex++, katmanNesne = katmanNesne.sonrakiKatman) {
+        for (; (katmanNesne != null); parentIndex++, katmanNesne = katmanNesne.sonrakiKatman) {
             girisList.add(new ArrayList<Double>());
-          /*  cikisList.add(new ArrayList<Double>());
-
-            for (int index = 0; index < katmanNesne.getHucreListSize(); index++) {
-                cikisList.get(parentIndex).add(0.0);
-            }*/
-
             for (int i = 0; i < katmanNesne.getHucreAgirlikSize(); i++) {
                 girisList.get(parentIndex).add(0.0);
             }
         }
+        girisList.add(new ArrayList<Double>());
+        for (int i = 0; i < YapayZekaNode.getnesne().getSonKatman().getHucreListSize(); i++) {
+            girisList.get(parentIndex).add(0.0);
+        }
+
     }
 
     public double getHataOrani() {
@@ -79,15 +79,16 @@ public class YapayZekaEgit {
         }
     }
 
-    private void katmanDolas(double[] girisData) {
-        
+    private void katmanDolas(double[] data) {
+
         Katman katmanNesne = YapayZekaNode.getnesne().getIlkKatman();
-        this.setGirisList(Normalizasyon.getNesne().islemYap(girisData, new Normalize(), 0, girisData.length), 0);
+        double[] girisData = Normalizasyon.getNesne().islemYap(data, new Normalize(), 0, data.length);
+        this.setGirisList(girisData, 0);
 
         for (int index = 1; (katmanNesne != null); index++, katmanNesne = katmanNesne.sonrakiKatman) {
-            
+
             girisData = katmanNesne.hucreKararlari(girisData);
-            this.setGirisList(girisData, 0);
+            this.setGirisList(girisData, index);
         }
     }
 }

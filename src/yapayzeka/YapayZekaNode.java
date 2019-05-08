@@ -28,11 +28,17 @@ public class YapayZekaNode {
         return node;
 
     }
-    public Katman getIlkKatman(){
+
+    public Katman getIlkKatman() {
         return this.ilkKatman;
     }
+
+    public Katman getSonKatman() {
+        return this.sonKatman;
+    }
+
     public void katmanHazirla() {
-        
+
         this.ilkKatman = new Katman(YapayZekaVeriGiris.getNesne().getKatmanHucreSayisi(0), YapayZekaVeriGiris.getNesne().getHucreBaglantiSayisi(0));
 
         Katman yedekKatman = ilkKatman;
@@ -40,24 +46,23 @@ public class YapayZekaNode {
             Katman katman = new Katman(YapayZekaVeriGiris.getNesne().getKatmanHucreSayisi(index), YapayZekaVeriGiris.getNesne().getHucreBaglantiSayisi(index));
             yedekKatman.sonrakiKatman = katman;
             katman.oncekiKatman = yedekKatman;
-            
+
             yedekKatman = katman;
         }
-        
+
         this.sonKatman = yedekKatman;
     }
-    
 
     public double[] kararVer(double[] bagimsizDegisken) {
-        
+
         int bagimli = YapayZekaVeriGiris.getNesne().getBagimliDegiskenSayisi();
 
         double[] normalizeData = Normalizasyon.getNesne().islemYap(bagimsizDegisken, new Normalize(), 0, bagimsizDegisken.length);
 
         double[] kararData = this.ilkKatman.iletisimBaslat(normalizeData);
-        
+
         double[] deNormalizeData = Normalizasyon.getNesne().islemYap(kararData, new DeNormalize(), bagimsizDegisken.length, bagimli + bagimsizDegisken.length);
-        
+
         return deNormalizeData;
     }
 }
