@@ -11,7 +11,8 @@ package yapayzeka;
  */
 public class YapayZekaNode {
 
-    private Katman katmanList = null;
+    public Katman ilkKatman = null;
+    public Katman sonKatman = null;
 
     static private YapayZekaNode node = null;
 
@@ -30,22 +31,27 @@ public class YapayZekaNode {
 
     public void katmanHazirla() {
         
-        this.katmanList = new Katman(YapayZekaVeriGiris.getNesne().getKatmanHucreSayisi(0), YapayZekaVeriGiris.getNesne().getHucreBaglantiSayisi(0));
+        this.ilkKatman = new Katman(YapayZekaVeriGiris.getNesne().getKatmanHucreSayisi(0), YapayZekaVeriGiris.getNesne().getHucreBaglantiSayisi(0));
 
-        Katman yedekKatman = katmanList;
+        Katman yedekKatman = ilkKatman;
         for (int index = 1; index < YapayZekaVeriGiris.getNesne().getKatmanSayisi(); index++) {
             Katman katman = new Katman(YapayZekaVeriGiris.getNesne().getKatmanHucreSayisi(index), YapayZekaVeriGiris.getNesne().getHucreBaglantiSayisi(index));
             yedekKatman.sonrakiKatman = katman;
+            katman.oncekiKatman = yedekKatman;
+            
             yedekKatman = katman;
         }
+        
+        this.sonKatman = yedekKatman;
     }
+    
 
     public void kararVer(double[] bagimliDegisken, double[] bagimsizDegisken) {
         
 
         double[] normalizeData = Normalizasyon.getNesne().islemYap(bagimsizDegisken, new Normalize(), 0, bagimsizDegisken.length);
 
-        double[] kararData = this.katmanList.iletisimBaslat(normalizeData);
+        double[] kararData = this.ilkKatman.iletisimBaslat(normalizeData);
         
         double[] deNormalizeData = Normalizasyon.getNesne().islemYap(kararData, new DeNormalize(), bagimsizDegisken.length, bagimliDegisken.length + bagimsizDegisken.length);
         

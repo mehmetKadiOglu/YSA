@@ -29,9 +29,14 @@ public class Hücre {
         for (int index = 0; index < agirlikUzunlugu; index++) {
             this.agirlik[index] = Math.random();
            // this.agirlik[index] =  -1 +  (2 * r.nextDouble())  ;
-           System.out.println(this.getAgirlik()[index]);
         }
 
+    }
+    public void setAgirlik(double yeniAgirlik[]){
+        this.agirlik = yeniAgirlik;
+    }
+    public int getAgirlikSize(){
+        return agirlik.length;
     }
 
     public double kararAl(double[] data) {

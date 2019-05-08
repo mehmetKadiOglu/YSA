@@ -5,6 +5,9 @@
  */
 package yapayzeka;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -13,7 +16,7 @@ import javax.swing.JFrame;
  */
 public class Command {
 
-    public void verileriHazirla() {
+    public void verileriAl() {
 
         YapayZekaVeriGiris.getNesne().bagimliDegiskenSayisiAl();
         YapayZekaVeriGiris.getNesne().bagimsizDegiskenSayisiAl();
@@ -22,13 +25,30 @@ public class Command {
         YapayZekaVeriGiris.getNesne().dosyaYoluAl();
         YapayZekaVeriGiris.getNesne().hucreBaglantiSayisiHazirla();
     }
+    
+    public void normalizeYap(){
+        int bagimli = YapayZekaVeriGiris.getNesne().getBagimliDegiskenSayisi(); 
+        int bagimsiz = YapayZekaVeriGiris.getNesne().getBagimsizDegiskenSayisi();
+        
+        DegerAralikIslem minList = new MinDeger(bagimli + bagimsiz);
+        DegerAralikIslem maxList = new MaxDeger(bagimli + bagimsiz);
+
+        minList.aralikBul();
+        maxList.aralikBul();
+
+        Normalizasyon.getNesne().setMaxList(maxList.getDegerArray());
+        Normalizasyon.getNesne().setMinList(minList.getDegerArray());
+    }
 
     public void yapayZekaTahmin() {
 
         YapayZekaNode.getnesne().katmanHazirla();
         YapayZekaIslem nesne = new YapayZekaIslem();
-        nesne.degerleriHazirla();
-        nesne.islemBaslat();
+        try {
+            nesne.islemBaslat();
+        } catch (IOException ex) {
+            Logger.getLogger(Command.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void yapayZekaCiz() {

@@ -16,6 +16,7 @@ public class Katman {
 
     private List<Hücre> hucreList;
     public Katman sonrakiKatman = null;
+    public Katman oncekiKatman = null;
 
     public Katman(int uzunluk, int hucreBaglantiSayi) {
 
@@ -32,7 +33,7 @@ public class Katman {
         }
     }
 
-    private int getHucreListSize() {
+    public int getHucreListSize() {
 
         return this.hucreList.size();
     }

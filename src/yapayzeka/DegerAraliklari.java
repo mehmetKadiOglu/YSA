@@ -5,9 +5,7 @@
  */
 package yapayzeka;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,17 +30,7 @@ class ConvertDouble {
 
 abstract class DegerAralikIslem {
 
-    protected BufferedReader buffer;
     protected double[] aralikArray;
-
-    public DegerAralikIslem(String dosyaAdi) {
-
-        try {
-            this.buffer = new BufferedReader(new FileReader(dosyaAdi));
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(DegerAralikIslem.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 
     abstract void aralikBul();
 
@@ -66,7 +54,6 @@ class MinDeger extends DegerAralikIslem {
 
     public MinDeger(int parametreSayisi) {
 
-        super(YapayZekaVeriGiris.getNesne().getDosyaYolu());
         this.setAralikArray(parametreSayisi);
     }
 
@@ -83,10 +70,13 @@ class MinDeger extends DegerAralikIslem {
     @Override
     public void aralikBul() {
 
-        String line = "";
         try {
-            this.buffer.readLine();
-            while ((line = this.buffer.readLine()) != null) {
+
+            ReaderCSV nesne = new ReaderCSV();
+            nesne.clearBuffer();
+            String line = null;
+
+            while ((line = nesne.getSatir()) != null) {
                 this.karsilastirmaIslem(ConvertDouble.convert(line.split(";")));
             }
 
@@ -110,7 +100,6 @@ class MinDeger extends DegerAralikIslem {
 class MaxDeger extends DegerAralikIslem {
 
     public MaxDeger(int parametreSayisi) {
-        super(YapayZekaVeriGiris.getNesne().getDosyaYolu());
         this.setAralikArray(parametreSayisi);
     }
 
@@ -120,11 +109,13 @@ class MaxDeger extends DegerAralikIslem {
 
     @Override
     public void aralikBul() {
-
-        String line = "";
         try {
-            this.buffer.readLine();
-            while ((line = this.buffer.readLine()) != null) {
+
+            ReaderCSV nesne = new ReaderCSV();
+            nesne.clearBuffer();
+            String line = null;
+
+            while ((line = nesne.getSatir()) != null) {
                 this.karsilastirmaIslem(ConvertDouble.convert(line.split(";")));
             }
 
