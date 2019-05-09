@@ -48,7 +48,8 @@ public class YapayZeka {
 
         command.verileriAl();
         command.normalizeYap();
-        // command.yapayZekaTahmin();
-        //command.yapayZekaCiz();
+
+        command.yapayZekaTahmin();
+        command.yapayZekaCiz();
     }
 }

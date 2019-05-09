@@ -90,7 +90,9 @@ public class YapayZekaVeriGiris {
 
     public void katmanSayisiAl() {
         System.out.print("Lütfen katman sayi gir ");
-        this.setKatmanSayisi(this.getInput().nextInt() + 1); // bitişide katman olarak alıyorum
+       // this.setKatmanSayisi(this.getInput().nextInt() + 1); // bitişide katman olarak alıyorum
+       
+       this.setKatmanSayisi(2);
     }
     public void katmanHucreSayilariAl() {
 
@@ -105,12 +107,16 @@ public class YapayZekaVeriGiris {
     public void bagimsizDegiskenSayisiAl() {
 
         System.out.print("Bagimsiz Degisken Sayisi Giriniz ");
-        this.setBagimsizDegiskenSayisi(this.getInput().nextInt());
+        //this.setBagimsizDegiskenSayisi(this.getInput().nextInt());
+        
+        this.setBagimsizDegiskenSayisi(2);
     }
     public void bagimliDegiskenSayisiAl() {
 
         System.out.print("Bagimli Degisken Sayisi Giriniz ");
-        this.setBagimliDegiskenSayisi(this.getInput().nextInt());
+        //this.setBagimliDegiskenSayisi(this.getInput().nextInt());
+        
+        this.setBagimliDegiskenSayisi(1);
     }
     public void hucreBaglantiSayisiHazirla() {
 
@@ -126,7 +132,10 @@ public class YapayZekaVeriGiris {
     }
     public void dosyaYoluAl(){
         System.out.print(" Dosya yolunu giriniz ");
-        this.setDosyaYolu(this.getInput().next());
+        //this.setDosyaYolu(this.getInput().next());
+        
+        this.setDosyaYolu("D://lazimliklar/dersler/Machine_Learning/Uygulama/deneme2.csv");
+        
         System.out.println();
     }
     

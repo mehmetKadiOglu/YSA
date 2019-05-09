@@ -25,11 +25,11 @@ public class Command {
         YapayZekaVeriGiris.getNesne().dosyaYoluAl();
         YapayZekaVeriGiris.getNesne().hucreBaglantiSayisiHazirla();
     }
-    
-    public void normalizeYap(){
-        int bagimli = YapayZekaVeriGiris.getNesne().getBagimliDegiskenSayisi(); 
+
+    public void normalizeYap() {
+        int bagimli = YapayZekaVeriGiris.getNesne().getBagimliDegiskenSayisi();
         int bagimsiz = YapayZekaVeriGiris.getNesne().getBagimsizDegiskenSayisi();
-        
+
         DegerAralikIslem minList = new MinDeger(bagimli + bagimsiz);
         DegerAralikIslem maxList = new MaxDeger(bagimli + bagimsiz);
 
@@ -43,12 +43,11 @@ public class Command {
     public void yapayZekaTahmin() {
 
         YapayZekaNode.getnesne().katmanHazirla();
-        YapayZekaIslem nesne = new YapayZekaIslem();
-        try {
-            nesne.islemBaslat();
-        } catch (IOException ex) {
-            Logger.getLogger(Command.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        YapayZekaEgit egitim = new YapayZekaEgit();
+        egitim.OgrenmeBaslat();
+       /* YapayZekaIslem nesne = new YapayZekaIslem();
+        nesne.islemBaslat();
+        */
     }
 
     public void yapayZekaCiz() {

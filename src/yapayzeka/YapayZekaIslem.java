@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class YapayZekaIslem {
 
-    public void islemBaslat() throws IOException {
+    public void islemBaslat() {
         
         ReaderCSV nesne = new ReaderCSV();
         nesne.clearBuffer();
