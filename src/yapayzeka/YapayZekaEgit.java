@@ -109,20 +109,49 @@ public class YapayZekaEgit {
 
         int cikisListParentIndex = this.cikisList.size() - 2;
         // cikis listin en sonunda tahmin edilen bağımlı değişkenler var. Bundan dolayı -2 dedik.
-
         double[] hucreAgirlik;
 
-        List<Hücre> liste = YapayZekaNode.getnesne().getSonKatman().getHucreList();
+        List<Hücre> hucreListe = YapayZekaNode.getnesne().getSonKatman().getHucreList();
 
-        for (int parentIndex = 0; parentIndex < liste.size(); parentIndex++) {
-            hucreAgirlik = liste.get(parentIndex).getAgirlik();
-            for (int index = 0; index < liste.get(0).getAgirlikSize(); index++) {
+        for (int parentIndex = 0; parentIndex < hucreListe.size(); parentIndex++) {
+            hucreAgirlik = hucreListe.get(parentIndex).getAgirlik();
+            for (int index = 0; index < hucreListe.get(0).getAgirlikSize(); index++) {
                 
                 hucreAgirlik[index] = hucreAgirlik[index] + (this.OGRENME_KATSAYİSİ * this.S0List.get(parentIndex) * this.cikisList.get(cikisListParentIndex).get(index));
                 
             }
-            liste.get(parentIndex).setAgirlik(hucreAgirlik);
+            hucreListe.get(parentIndex).setAgirlik(hucreAgirlik);
         }
 
     }
+    
+    private void gizliKatmanAgirliklariGuncelle(){
+        
+        Katman katmanNesne = YapayZekaNode.getnesne().getSonKatman();
+        List<Hücre> bulundumuzKatmanHucreList = null;
+        List<Hücre> sonrakiKatmanHucreList = null;
+        double[] bulundumuzHucreAgirlikList = null;
+        double[] sonrakiHucreAgirlikList = null;
+        int cikisIndex = 3;
+        
+        while((katmanNesne = katmanNesne.oncekiKatman) != null){
+            
+            bulundumuzKatmanHucreList = katmanNesne.getHucreList();
+            sonrakiKatmanHucreList = katmanNesne.sonrakiKatman.getHucreList();
+            
+            for (int SoListIndex = 0; SoListIndex < this.S0List.size(); SoListIndex++) {
+                for (int hucreListIndex = 0; hucreListIndex < bulundumuzKatmanHucreList.size(); hucreListIndex++) {
+                    for (int hucreAgirlikIndex = 0; hucreAgirlikIndex < bulundumuzKatmanHucreList.get(hucreListIndex).getAgirlikSize(); hucreAgirlikIndex++) {
+                        
+                    }
+                }
+            }
+        }
+    }
+    
+    private void setSyList(Katman katmanNesne, double S0, int cikisIndex){
+        
+    }
+    
+    
 }

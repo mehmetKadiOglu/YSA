@@ -44,12 +44,21 @@ public class YapayZeka {
      */
     public static void main(String[] args) {
         //          this.setDosyaYolu("D://lazimliklar/dersler/Machine_Learning/Uygulama/deneme2.csv");
-        Command command = new Command();
+       /* Command command = new Command();
 
         command.verileriAl();
         command.normalizeYap();
 
         command.yapayZekaTahmin();
-        command.yapayZekaCiz();
+        command.yapayZekaCiz();*/
+       
+       List<String> stt = new ArrayList<>();
+       stt.add("hirrrim");
+       stt.add("hirrrim2");
+       stt.add("hirrrim3");
+       System.out.println(stt.size());
+       stt.clear();
+       System.out.println(stt.size());
+       
     }
 }

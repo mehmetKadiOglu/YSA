@@ -70,19 +70,17 @@ class MinDeger extends DegerAralikIslem {
     @Override
     public void aralikBul() {
 
-        try {
 
-            ReaderCSV nesne = new ReaderCSV();
-            nesne.clearBuffer();
-            String line = null;
 
-            while ((line = nesne.getSatir()) != null) {
-                this.karsilastirmaIslem(ConvertDouble.convert(line.split(";")));
-            }
+        ReaderCSV nesne = new ReaderCSV();
+        nesne.clearBuffer();
+        String line = null;
 
-        } catch (IOException ex) {
-            Logger.getLogger(MinDeger.class.getName()).log(Level.SEVERE, null, ex);
+        while ((line = nesne.getSatir()) != null) {
+            this.karsilastirmaIslem(ConvertDouble.convert(line.split(";")));
         }
+
+
     }
 
     private void karsilastirmaIslem(double[] data) {
@@ -109,8 +107,7 @@ class MaxDeger extends DegerAralikIslem {
 
     @Override
     public void aralikBul() {
-        try {
-
+        
             ReaderCSV nesne = new ReaderCSV();
             nesne.clearBuffer();
             String line = null;
@@ -119,9 +116,7 @@ class MaxDeger extends DegerAralikIslem {
                 this.karsilastirmaIslem(ConvertDouble.convert(line.split(";")));
             }
 
-        } catch (IOException ex) {
-            Logger.getLogger(MinDeger.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }
 
     private void karsilastirmaIslem(double[] data) {

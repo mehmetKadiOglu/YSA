@@ -90,7 +90,7 @@ public class YapayZekaVeriGiris {
 
     public void katmanSayisiAl() {
         System.out.print("Lütfen katman sayi gir ");
-       // this.setKatmanSayisi(this.getInput().nextInt() + 1); // bitişide katman olarak alıyorum
+      // this.setKatmanSayisi(this.getInput().nextInt() + 1); // bitişide katman olarak alıyorum
        
        this.setKatmanSayisi(2);
     }
@@ -107,7 +107,7 @@ public class YapayZekaVeriGiris {
     public void bagimsizDegiskenSayisiAl() {
 
         System.out.print("Bagimsiz Degisken Sayisi Giriniz ");
-        //this.setBagimsizDegiskenSayisi(this.getInput().nextInt());
+       // this.setBagimsizDegiskenSayisi(this.getInput().nextInt());
         
         this.setBagimsizDegiskenSayisi(2);
     }
@@ -136,7 +136,6 @@ public class YapayZekaVeriGiris {
         
         this.setDosyaYolu("D://lazimliklar/dersler/Machine_Learning/Uygulama/deneme2.csv");
         
-        System.out.println();
     }
     
     static public YapayZekaVeriGiris getNesne(){
