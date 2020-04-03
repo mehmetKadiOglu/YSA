@@ -70,7 +70,7 @@ public class YapayZekaEgit {
     }
 
     public void OgrenmeBaslat() {
-        
+
         int bagimli = YapayZekaVeriGiris.getNesne().getBagimliDegiskenSayisi();
         int bagimsiz = YapayZekaVeriGiris.getNesne().getBagimsizDegiskenSayisi();
         ReaderCSV readerNesne = new ReaderCSV();
@@ -100,7 +100,7 @@ public class YapayZekaEgit {
 
         for (int index = 1; (katmanNesne != null); index++, katmanNesne = katmanNesne.sonrakiKatman) {
 
-           double [] girisDatasds = katmanNesne.hucreKararlari(girisData);
+            double[] girisDatasds = katmanNesne.hucreKararlari(girisData);
             this.setCikisList(girisDatasds, index);
         }
     }
@@ -116,42 +116,72 @@ public class YapayZekaEgit {
         for (int parentIndex = 0; parentIndex < hucreListe.size(); parentIndex++) {
             hucreAgirlik = hucreListe.get(parentIndex).getAgirlik();
             for (int index = 0; index < hucreListe.get(0).getAgirlikSize(); index++) {
-                
+
                 hucreAgirlik[index] = hucreAgirlik[index] + (this.OGRENME_KATSAYİSİ * this.S0List.get(parentIndex) * this.cikisList.get(cikisListParentIndex).get(index));
-                
+
             }
             hucreListe.get(parentIndex).setAgirlik(hucreAgirlik);
         }
 
     }
-    
-    private void gizliKatmanAgirliklariGuncelle(){
-        
+
+    private void gizliKatmanAgirliklariGuncelle() {
+
         Katman katmanNesne = YapayZekaNode.getnesne().getSonKatman();
-        List<Hücre> bulundumuzKatmanHucreList = null;
-        List<Hücre> sonrakiKatmanHucreList = null;
-        double[] bulundumuzHucreAgirlikList = null;
-        double[] sonrakiHucreAgirlikList = null;
-        int cikisIndex = 3;
+        double[] agirlikCarpimArray = this.cikisKatmanAgirlikCarpim();
         
-        while((katmanNesne = katmanNesne.oncekiKatman) != null){
-            
-            bulundumuzKatmanHucreList = katmanNesne.getHucreList();
-            sonrakiKatmanHucreList = katmanNesne.sonrakiKatman.getHucreList();
-            
+        List<Hücre> katmanHucreList = null;
+        double[] hucreAgirlikArray = null;
+        int cikisIndex = this.cikisList.size() - 3;  // bulunduğumuz hücrenin cıkışı setleniyor.
+        
+        double syDegeri;
+
+        while ((katmanNesne = katmanNesne.oncekiKatman) != null) {
+
+            katmanHucreList = katmanNesne.getHucreList();
+
             for (int SoListIndex = 0; SoListIndex < this.S0List.size(); SoListIndex++) {
-                for (int hucreListIndex = 0; hucreListIndex < bulundumuzKatmanHucreList.size(); hucreListIndex++) {
-                    for (int hucreAgirlikIndex = 0; hucreAgirlikIndex < bulundumuzKatmanHucreList.get(hucreListIndex).getAgirlikSize(); hucreAgirlikIndex++) {
-                        
+                for (int hucreListIndex = 0; hucreListIndex < katmanHucreList.size(); hucreListIndex++) {
+                    
+                    syDegeri = agirlikCarpimArray[SoListIndex] * this.S0List.get(SoListIndex) * ((1 - cikisList.get(cikisIndex).get(hucreListIndex)) * cikisList.get(cikisIndex).get(hucreListIndex));
+                    
+                    for (int hucreAgirlikIndex = 0; hucreAgirlikIndex < katmanHucreList.get(hucreListIndex).getAgirlikSize(); hucreAgirlikIndex++) {
+
                     }
                 }
             }
         }
     }
-    
-    private void setSyList(Katman katmanNesne, double S0, int cikisIndex){
+
+    private double[]  syHesapla(Katman katmanNesne, double S0, int cikisIndex, double agirlikCarpimi) {
+
+        double[] SyArray = new double[katmanNesne.getHucreListSize()];
+
+        for (int katmanHucreIndex = 0; katmanHucreIndex < katmanNesne.getHucreListSize(); katmanHucreIndex++) {
+            SyArray[katmanHucreIndex] = agirlikCarpimi * S0 * ((1 - cikisList.get(cikisIndex).get(katmanHucreIndex)) * cikisList.get(cikisIndex).get(katmanHucreIndex));
+        }
         
+        return SyArray;
+
     }
-    
-    
+
+    private double[] cikisKatmanAgirlikCarpim() {
+        List<Hücre> hucreList = YapayZekaNode.getnesne().getSonKatman().getHucreList();
+        double[] agirlikCarpimArray = new double[hucreList.size()];
+        double[] agirlikArray;
+        double carpim = 1;
+        for (int hucreListIndex = 0; hucreListIndex < hucreList.size(); hucreListIndex++) {
+            agirlikArray = hucreList.get(hucreListIndex).getAgirlik();
+            carpim = 1;
+            for (int hucreAgirlikIndex = 0; hucreAgirlikIndex < agirlikArray.length; hucreAgirlikIndex++) {
+
+                carpim = carpim * agirlikArray[hucreAgirlikIndex];
+            }
+
+            agirlikCarpimArray[hucreListIndex] = carpim;
+        }
+
+        return agirlikCarpimArray;
+    }
+
 }

@@ -52,13 +52,5 @@ public class YapayZeka {
         command.yapayZekaTahmin();
         command.yapayZekaCiz();*/
        
-       List<String> stt = new ArrayList<>();
-       stt.add("hirrrim");
-       stt.add("hirrrim2");
-       stt.add("hirrrim3");
-       System.out.println(stt.size());
-       stt.clear();
-       System.out.println(stt.size());
-       
     }
 }
